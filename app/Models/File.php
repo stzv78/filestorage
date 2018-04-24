@@ -9,7 +9,7 @@ class File extends Model
     protected $fillable = [
         'id',
         'description',
-        'hash_file', 
+        'hash_file',
         'hash_user',
     ];
 }
