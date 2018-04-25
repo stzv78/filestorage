@@ -11,10 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/', 'MainController@index')->name('home')->middleware('auth');
+Route::get('/files/{type}/{id?}', 'FileController@index');
+
+Route::post('files/add', 'FileController@store');
+Route::post('files/edit/{id}', 'FileController@edit');
+Route::post('files/delete/{id}', 'FileController@destroy');
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
