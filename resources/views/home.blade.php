@@ -1,23 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
 
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
+                    @include ('flashes')
+
+                    <div class="panel-heading">Добро пожаловать, Администратор!</div>
+
+                    <div class="panel-body">
+                        <div class="panel-body">
+                            <li><a href="{{ route('file.create') }}" class="cancel">Загрузить файл >></a>
+                            <li><a href="{{ route('file.index') }}" class="cancel">Работать с файлами >></a>
                         </div>
-                    @endif
-
-                    You are logged in!
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection

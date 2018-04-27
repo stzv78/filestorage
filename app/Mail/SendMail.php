@@ -19,10 +19,11 @@ class SendMail extends Mailable
      *
      * @return void
      */
-    public function __construct($email, $fileLink)
+    public function __construct($email, $fileLink, $name)
     {
-        $this->fileLink = $fileLink;
         $this->email = $email;
+        $this->fileLink = $fileLink;
+        $this->name = $name;
     }
 
     /**
@@ -32,6 +33,9 @@ class SendMail extends Mailable
      */
     public function build()
     {
-        return $this->to($email)->view('mail.send')->with('fileLink', $this->fileLink);
+        return $this->to($this->email)
+            ->view('mail.send')
+            ->with(['fileLink'=> $this->fileLink, 'name' => $this->name])
+            ->from('file.storages.ex@gmail.com');
     }
 }
