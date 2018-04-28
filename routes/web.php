@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home')->middleware('auth');
 
-Route::resource('file', 'FileController', ['except' => 'show'])->middleware('auth');
+Route::resource('file', 'FileController', ['except' => 'show']);
 
 Auth::routes();
